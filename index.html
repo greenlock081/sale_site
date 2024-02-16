@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Removal Request</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.png" alt="Sale Logo" class="logo">
+        </div>
+        <h1>Запрос удаления аккаунта и личных данных, включая ФИО, адрес электронной почты, номер телефона и даты рождения</h1>
+        <div class="instructions">
+            <h2>Инструкция</h2>
+            <p>Пожалуйста, заполните форму ниже, чтобы запросить удаление ваших личных данных из приложения Sale.</p>
+            <p>Мы обработаем ваш запрос как можно скорее. Спасибо.</p>
+        </div>
+        <div class="form-container" id="formContainer">
+            <form id="removalForm">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Ваша электронная почта:</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="reason">Причина запроса на удаление:</label>
+                <textarea id="reason" name="reason" required></textarea>
+
+                <button type="submit">Подтвердить</button>
+            </form>
+        </div>
+        <div id="confirmation" class="hidden">
+            <p>Ваш запрос был отправлен. Мы обработаем его в ближайшее время.</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("removalForm").addEventListener("submit", function(event) {
+          event.preventDefault();
+    
+          // Collect form data
+          var formData = new FormData(event.target);
+          var formObject = {};
+          formData.forEach(function(value, key){
+            formObject[key] = value;
+          });
+    
+          // Display confirmation message and hide form
+          document.getElementById("formContainer").style.display = "none";
+          document.getElementById("confirmation").style.display = "block";
+    
+          // Here you can handle sending the data to your backend for further processing
+          // For simplicity, we are just logging the data to the console
+          console.log(formObject);
+        });
+      </script>
+</body>
+</html>
